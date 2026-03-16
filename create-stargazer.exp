@@ -1,0 +1,19 @@
+#!/usr/bin/expect -f
+
+set timeout 60
+
+spawn npx create-video@latest --stargazer
+
+expect {
+    "Directory to create your project" {
+        send "stargazer-video\r"
+        exp_continue
+    }
+    "Do you want to continue" {
+        send "Yes\r"
+        exp_continue
+    }
+    eof
+}
+
+wait
